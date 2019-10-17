@@ -6,6 +6,8 @@ public class ArbolBin {
     Nodo root;
     int deep=-1;
     int max=-1;
+    private int number = 0;
+    private int height = -1;
     
     public ArbolBin(){
         root = null;
@@ -96,10 +98,11 @@ public class ArbolBin {
             aux.pad.izq = null;
         else
             aux.pad.der = null;
+        
+        number--;
         return aux;
     }
-
-    
+        
     public void prefija(){
         System.out.println("Notación prefija");
         System.out.print("[ ");
@@ -144,5 +147,49 @@ public class ArbolBin {
             System.out.print(n.valor + " ");
         }
     }
+    
+    public int numberOfNodes(){
+        number = 0;
+        count(root);
+        return number;
+    }
+    
+    
+    void count (Nodo n){
+        if(n != null){
+            count(n.izq);
+            number++;
+            count(n.der);
+        }   
+    }
+    
+    public int computeHeight(){
+        return treeHeight(root) -1;
+    }
+
+    
+    int treeHeight(Nodo n){
+        if(n == null)
+            return 0;
+        return 1+ Math.max(treeHeight(n.der), treeHeight(n.izq));
+    }
+    
+    public boolean isBalanced(){
+        return checkBalanced(root);
+    }
+    
+    
+    public boolean checkBalanced(Nodo n){
+        int iz, der;
+        if(n==null)
+            return true;
+        iz = treeHeight(n.der);
+        der = treeHeight(n.izq);
+        if((-1 <= iz-der && iz-der <=1) && checkBalanced(n.der) && checkBalanced(n.izq))
+            return true;
+        return false;
+    }
+    
+    
     
 }

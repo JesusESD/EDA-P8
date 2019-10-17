@@ -29,6 +29,7 @@ public class ArbolBusq extends ArbolBin {
     
     public Nodo delete(int val){
         Nodo z = busqueda(val);
+        
         Nodo x;
         Nodo y;
         

@@ -2,7 +2,7 @@ package arboles;
 
 public class Ejercicio1 {
     public static void main(String[] args) {
-        
+        /*
         ArbolBin arbol;
         Nodo n7 = new Nodo(7);
         Nodo n9 = new Nodo(9);
@@ -26,7 +26,8 @@ public class Ejercicio1 {
         arbol.infija();
         arbol.posfija();
         //System.out.println(arbol.deepest().valor + " "+ arbol.max);
-        
+        System.out.println(arbol.numberOfNodes());
+        System.out.println("La altura es: "+arbol.computeHeight());
         System.out.println("");
         arbol.breadthFirst();
         System.out.println("");
@@ -39,9 +40,10 @@ public class Ejercicio1 {
         System.out.println("");
         arbol.delete(2);
         arbol.breadthFirst();
-
-
-/*
+        System.out.println("");
+        System.out.println("La altura es: "+arbol.computeHeight());
+        System.out.println(arbol.numberOfNodes());
+*/
         ArbolBusq abb = new ArbolBusq(8);
         //abb.breadthFirst();
         abb.insert(3);
@@ -56,12 +58,17 @@ public class Ejercicio1 {
         abb.prefija();
         Nodo b = abb.busqueda(13);
         System.out.println(b.valor + "," + b.pad.valor);
-        Nodo nuev = abb.delete(7);
-        //System.out.println(nuev.valor);
+        System.out.println("Esta balanceado "+abb.isBalanced());
         abb.breadthFirst();
-        nuev = abb.delete(6);
+        abb.delete(6);
+        abb.delete(7);
+        System.out.println("Esta balanceado "+abb.isBalanced());
         System.out.println("");
-        abb.breadthFirst();
-        */
+        abb.delete(13);
+        System.out.println("Esta balanceado "+abb.isBalanced());
+        System.out.println("Numero de nodos "+abb.numberOfNodes());
+        System.out.println("Altura de nodos "+abb.computeHeight());
+        
+ //       */
     }
 }
