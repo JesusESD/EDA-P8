@@ -20,6 +20,10 @@ public class Ejercicio1 {
         arbol.add(n15, n16, 1);
         arbol.add(n8, n3, 0);
         arbol.breadthFirst();
-        System.out.println(arbol.busqueda(16));
+        System.out.println(arbol.busqueda(3));
+        arbol.prefija();
+        arbol.infija();
+        arbol.posfija();
+        
     }
 }

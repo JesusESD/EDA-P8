@@ -44,20 +44,66 @@ public class ArbolBin {
         }
     }
     
-    public boolean busqueda(int value){
-        Nodo r = root;
-        return buscar(r,value);
+    public boolean busqueda(int x){
+        return buscar(root, x);
     }
-    private boolean buscar(Nodo raiz, int value){
-        if(raiz.valor == value)
+    
+    private boolean buscar(Nodo n, int x){
+        if(n == null)
+            return false;
+        
+        if (n.valor == x)
             return true;
-        else{
-            if(raiz.der != null)
-                return buscar(raiz.der, value);
-            if(raiz.izq != null)
-                return buscar(raiz.izq, value);
+        
+        boolean izq = buscar(n.izq, x); //busca en el subárbol derecho
+        boolean der = buscar(n.der, x); //busca en el subárbol izquierdo
+        
+        return (der || izq);  //si se encuentra en cualquiera de los subárboles se regresará true
+    }
+    
+    public void prefija(){
+        System.out.println("Notación prefija");
+        System.out.print("[ ");
+        preOrden(root);
+        System.out.println(" ] ");
+    }
+    
+    private void preOrden(Nodo n){
+        if(n != null){
+            System.out.print(n.valor + " ");
+            preOrden(n.izq);
+            preOrden(n.der);
         }
-        return false;
+    }
+    
+    public void infija(){
+        System.out.println("Notación infija");
+        System.out.print("[ ");
+        inOrden(root);
+        System.out.println(" ] ");
+    }
+    
+    private void inOrden(Nodo n){
+        if(n != null){
+            inOrden(n.izq);
+            System.out.print(n.valor + " ");
+            inOrden(n.der);
+        }   
+    }
+    
+    public void posfija(){
+        System.out.println("Notación posfija");
+        System.out.print("[ ");
+        posOrden(root);
+        System.out.println(" ] ");
+    }
+    
+    private void posOrden(Nodo n){
+        if(n!= null){
+            posOrden(n.izq);
+            posOrden(n.der);
+            System.out.print(n.valor + " ");
+        }
     }
     
 }

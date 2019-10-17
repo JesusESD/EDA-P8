@@ -3,8 +3,10 @@ package arboles;
 
 public class Nodo {
     int valor;
+    
     Nodo izq = null;
     Nodo der = null;
+    
     public Nodo(){
         izq=der=null;
     }
