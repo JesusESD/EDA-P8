@@ -44,21 +44,23 @@ public class ArbolBin {
         }
     }
     
-    public boolean busqueda(int x){
+    public Nodo busqueda(int x){
         return buscar(root, x);
     }
     
-    private boolean buscar(Nodo n, int x){
+    private Nodo buscar(Nodo n, int x){
         if(n == null)
-            return false;
+            return null;
         
         if (n.valor == x)
-            return true;
+            return n;
         
-        boolean izq = buscar(n.izq, x); //busca en el subárbol derecho
-        boolean der = buscar(n.der, x); //busca en el subárbol izquierdo
+        Nodo busq = null;
+        busq = buscar(n.izq, x); //busca en el subárbol derecho
+        if(busq == null)
+            busq = buscar(n.der, x); //busca en el subárbol izquierdo
         
-        return (der || izq);  //si se encuentra en cualquiera de los subárboles se regresará true
+        return busq; //si se encuentra en cualquiera de los subárboles se regresará true
     }
     
     public void prefija(){
