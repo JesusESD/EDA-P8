@@ -2,7 +2,7 @@ package arboles;
 
 public class Ejercicio1 {
     public static void main(String[] args) {
-        /*
+        
         ArbolBin arbol;
         Nodo n7 = new Nodo(7);
         Nodo n9 = new Nodo(9);
@@ -25,7 +25,23 @@ public class Ejercicio1 {
         arbol.prefija();
         arbol.infija();
         arbol.posfija();
-*/
+        //System.out.println(arbol.deepest().valor + " "+ arbol.max);
+        
+        System.out.println("");
+        arbol.breadthFirst();
+        System.out.println("");
+        arbol.delete(7);
+        arbol.breadthFirst();
+        System.out.println("");
+        arbol.delete(16);
+        arbol.breadthFirst();
+        
+        System.out.println("");
+        arbol.delete(2);
+        arbol.breadthFirst();
+
+
+/*
         ArbolBusq abb = new ArbolBusq(8);
         //abb.breadthFirst();
         abb.insert(3);
@@ -46,6 +62,6 @@ public class Ejercicio1 {
         nuev = abb.delete(6);
         System.out.println("");
         abb.breadthFirst();
-        
+        */
     }
 }

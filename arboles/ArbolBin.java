@@ -4,6 +4,8 @@ import java.util.Queue;
 
 public class ArbolBin {
     Nodo root;
+    int deep=-1;
+    int max=-1;
     
     public ArbolBin(){
         root = null;
@@ -22,6 +24,7 @@ public class ArbolBin {
             padre.setIzq(hijo);
         else
             padre.setDer(hijo);
+        hijo.pad = padre;
     }
     
     protected void visit(Nodo n){
@@ -47,6 +50,7 @@ public class ArbolBin {
     public Nodo busqueda(int x){
         return buscar(root, x);
     }
+      
     
     private Nodo buscar(Nodo n, int x){
         if(n == null)
@@ -62,6 +66,39 @@ public class ArbolBin {
         
         return busq; //si se encuentra en cualquiera de los subárboles se regresará true
     }
+    
+    public Nodo deepest(){
+        findDeep(root, 0);
+        Nodo r = busqueda(deep);
+        deep = max = -1;
+        return r;
+    }
+    
+      
+    private void findDeep(Nodo n, int l){
+      if(n != null){
+          findDeep(n.izq, ++l);
+          if(l > max){
+              deep = n.valor;
+              max = l;
+          }
+          findDeep(n.der, l);
+      }    
+    }
+    
+    public Nodo delete(int x){
+        Nodo z = busqueda(x);
+        Nodo aux = deepest();
+        //System.out.println(aux.valor);
+        z.valor = aux.valor;
+        
+        if(aux.pad.izq == aux)
+            aux.pad.izq = null;
+        else
+            aux.pad.der = null;
+        return aux;
+    }
+
     
     public void prefija(){
         System.out.println("Notación prefija");
